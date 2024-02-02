@@ -42,6 +42,14 @@ var BackdropSelect = {
 	"Scene3": "Moon",
 	"Scene4": "Moon"
 }
+
+var SoundSelect = {
+	"Scene1": ["None", "Sword", "None"],
+	"Scene2": ["None", "None"],
+}
+
+
+
 #Galleries Below--------------------------------------------------------------------------------------
 var CharacterGallery = {
 	"None": null,
@@ -51,6 +59,11 @@ var CharacterGallery = {
 var BackdropGallery = {
 	"Moon": load("res://Art/CG/FullMoon.jpg"),
 	"City": load("res://Art/CG/City.jpg")
+}
+
+var SoundGallery = {
+	"Sword": "res://Audio/SwordSlash.mp3",
+	"None": null,
 }
 
 #Variables--------------------------------------------------------------------------------------------
@@ -77,7 +90,9 @@ var AutoSpeed = 3.0
 var AutoTime = 0.0
 var AutoToggled = false
 var Reverse = Button.new()
-var MusicSelected = AudioEffect.new()
+var SFXplayer = AudioStreamPlayer.new()
+var SFX = AudioStream.new()
+var SoundScript = []
 
 
 # Called when the node enters the scene tree for the first time.
@@ -96,6 +111,7 @@ func _process(_delta):
 	$Sprite2.texture = Sprite2
 	$CG.texture = CGselected
 	$DialogueBox/DialoguePanel/Narrator.text = Nar
+	$SoundPlayer.stream = SFXplayer.stream
 	pass
 
 func _GameSetup():
@@ -105,11 +121,13 @@ func _GameSetup():
 	SpriteScript1 = Ch1Select.values()[SceneKey]
 	SpriteScript2 = Ch2Select.values()[SceneKey]
 	BackdropChosen = BackdropSelect.values()
+	SoundScript = SoundSelect.values()[SceneKey]
 	PD1 = $PlayerInput/Button
 	PD2 = $PlayerInput/Button2
 	PD3 = $PlayerInput/Button3
 	Auto = $PlayerControls/AutoPlay
 	Reverse = $PlayerControls/Rewind
+	SFXplayer = $SoundPlayer
 	pass
 
 func _SceneSetup():
@@ -126,6 +144,9 @@ func _SceneSetup():
 	Sprite2 = CharacterGallery.get(SpriteScript2[LineNum])
 	BackdropChosen = BackdropSelect.values()[SceneKey]
 	CGselected = BackdropGallery.get(BackdropChosen)
+	SoundScript = SoundSelect.values()[SceneKey]
+	#SFX.resource_path = SoundGallery.get(SoundScript)[LineNum]
+	print(SFX.resource_path)
 
 func _SceneSelection():
 	LineNum = 0
@@ -135,10 +156,12 @@ func _SceneSelection():
 	SpriteScript2 = Ch2Select.values()[SceneKey] 
 	MaxLine = DialogueScript.values()[SceneKey].size()
 	EndLine = false
+	AutoToggled = false
 
 func _input(event):
 	if event.is_action_released("Progress") and EndLine == false:
 		LineNum += 1
+		_SoundPlayed()
 	elif LineNum >= MaxLine:
 		EndLine = true
 		if PD1.button_pressed and EndLine == true:
@@ -169,14 +192,14 @@ func _Play():
 		if AutoTime >= AutoSpeed and EndLine == false:
 			LineNum += 1
 			AutoTime = 0.0
-			print("Work?")
 		elif LineNum >= MaxLine:
 			EndLine = true
 			AutoToggled = false
 			AutoTime = 0.0
 	elif AutoToggled == false:
-		print("Stopped?")
 		AutoTime = 0.0
-		
 
-
+func _SoundPlayed():
+	if SFX.resource_path != null:
+		SFXplayer.play()
+	else: SFXplayer.stop()

@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/UI/GameScreen.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://Audio/VNAliasAudio.tres"
+
 [dotnet]
 
 project/assembly_name="New You"
