@@ -93,9 +93,8 @@ var AutoSpeed = 3.0
 var AutoTime = 0.0
 var AutoToggled = false
 var Reverse = Button.new()
-var SFXplayer = AudioStreamPlayer.new()
-var SFX = AudioStream.new()
 var SoundScript = []
+var SFX = AudioStreamMP3.new()
 
 
 # Called when the node enters the scene tree for the first time.
@@ -114,6 +113,8 @@ func _process(_delta):
 	$Sprite2.texture = Sprite2
 	$CG.texture = CGselected
 	$DialogueBox/DialoguePanel/Narrator.text = Nar
+	$SoundPlayer.stream = SFX
+	print(SFX.resource_path)
 	pass
 
 func _GameSetup():
@@ -129,6 +130,7 @@ func _GameSetup():
 	PD3 = $PlayerInput/Button3
 	Auto = $PlayerControls/AutoPlay
 	Reverse = $PlayerControls/Rewind
+	
 	pass
 
 func _SceneSetup():
@@ -146,6 +148,7 @@ func _SceneSetup():
 	BackdropChosen = BackdropSelect.values()[SceneKey]
 	CGselected = BackdropGallery.get(BackdropChosen)
 	SoundScript = SoundSelect.values()[SceneKey]
+	SFX.resource_path = SoundGallery.get(SoundScript[LineNum])
 
 
 func _SceneSelection():
@@ -161,7 +164,7 @@ func _SceneSelection():
 func _input(event):
 	if event.is_action_released(\"Progress\") and EndLine == false:
 		LineNum += 1
-		SFXplayer.play()
+		$SoundPlayer.play()
 	elif LineNum >= MaxLine:
 		EndLine = true
 		if PD1.button_pressed and EndLine == true:
@@ -199,13 +202,9 @@ func _Play():
 	elif AutoToggled == false:
 		AutoTime = 0.0
 
-func _SoundPlayed():
-	if SFX.resource_path != null:
-		SFXplayer.play()
-	else: SFXplayer.stop()
 "
 
-[sub_resource type="AudioStream" id="AudioStream_5qyyx"]
+[sub_resource type="AudioStreamMP3" id="AudioStreamMP3_2x33m"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -349,5 +348,5 @@ size_flags_stretch_ratio = 20.0
 text = "Is this thing on?"
 
 [node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStream_5qyyx")
+stream = SubResource("AudioStreamMP3_2x33m")
 bus = &"Sound"
