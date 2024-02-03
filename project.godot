@@ -11,13 +11,19 @@ config_version=5
 [application]
 
 config/name="New You"
-run/main_scene="res://Scenes/UI/GameScreen.tscn"
+run/main_scene="res://Scenes/Player.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [audio]
 
 buses/default_bus_layout="res://Audio/VNAliasAudio.tres"
+
+[autoload]
+
+GameData="*res://Scripts/GameData.gd"
+GameScene="*res://Scenes/GameScene.tscn"
+CharacterSprites="*res://Scenes/CharacterSprites.tscn"
 
 [dotnet]
 
