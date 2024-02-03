@@ -48,6 +48,13 @@ var CGscript = {
 	"Scene4": "Moon"
 }
 
+var AmbianceScript = {
+	"Scene1": "Rain",
+	"Scene2": "Crowded Room",
+	"Scene3": "Rain",
+	"Scene4": "Rain",
+}
+
 #Galleries Below--------------------------------------------------------------------------------------
 var CharacterGallery = {
 	"None": null,
@@ -58,6 +65,11 @@ var CharacterGallery = {
 var BackdropGallery = {
 	"Moon": load("res://Art/CG/FullMoon.jpg"),
 	"City": load("res://Art/CG/City.jpg")
+}
+
+var AmbianceGallery = {
+	"Rain": load("res://Audio/Ambiance/Rain.mp3"),
+	"Crowded Room": load("res://Audio/Ambiance/CrowdedRoom.mp3")
 }
 
 var SceneKey = 0
