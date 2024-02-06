@@ -77,6 +77,7 @@ layout_mode = 2
 text = "Rewind"
 
 [node name="PlayerInput" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.444
@@ -311,6 +312,7 @@ min_value = -50.0
 max_value = 10.0
 
 [node name="PausePanel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.014
@@ -332,7 +334,7 @@ offset_top = 0.176
 offset_bottom = 0.159996
 text = "Resume"
 
-[node name="SaveButton" type="Button" parent="PausePanel"]
+[node name="Save Game" type="Button" parent="PausePanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.08
@@ -403,7 +405,7 @@ text = "Main Menu"
 [connection signal="value_changed" from="OptionsPanel/SoundVol/SoundSlider" to="." method="SoundVolume"]
 [connection signal="value_changed" from="OptionsPanel/MusicVol/MusicSlider" to="." method="MusicVolume"]
 [connection signal="pressed" from="PausePanel/ResumeButton" to="." method="Resume"]
-[connection signal="pressed" from="PausePanel/SaveButton" to="." method="Save"]
+[connection signal="pressed" from="PausePanel/Save Game" to="." method="Save"]
 [connection signal="pressed" from="PausePanel/Load Game" to="." method="Load"]
 [connection signal="pressed" from="PausePanel/Gallery" to="." method="Gallery"]
 [connection signal="pressed" from="PausePanel/Settings" to="." method="Settings"]

@@ -14,6 +14,7 @@ var Dialogue = "Testing"
 var CurrentScene = []
 var Nar = "Talking Here.."
 var CurrentNar = []
+var Play = false
 
 #Player Vars--------------------------------------------
 var pd1 = Button.new()
@@ -78,12 +79,17 @@ func _input(event):
 	if event.is_action_released("Progress") and EndLine == false and data.Main == false:
 		data.LineNum += 1
 		gamescene._SoundSelect()
-	elif data.LineNum >= MaxLine:
+	elif data.LineNum >= MaxLine and Play == true:
 		EndLine = true
 	else: EndLine = false
 	
 	if event.is_action_pressed("Pause") and data.Main == false:
 		Paused = !Paused
+		Play = !Paused
+		if Options == true and Paused == false:
+			Options = false
+		else: Options = Options
+
 
 #Player Dialogue Buttons------------------------------------
 func PlayerButton1():
@@ -113,6 +119,7 @@ func PlayerButton3():
 #AutoPlay Function-----------------------------------------
 func APbutton():
 	APtoggled = !APtoggled
+
 func _AutoPlay():
 	if APtoggled == true:
 		APstart += get_process_delta_time() * 1.0
@@ -137,37 +144,22 @@ func _MenuManager():
 	$OptionsPanel.visible = Options
 	$MenuPanel.visible = data.Main
 	$PausePanel.visible = Paused
-	
-	if data.Main == true:
-		Paused = false
-		$PlayerControls.visible = false
-		$PlayerInput.visible = false
-		$DialogueBox.visible = false
-	
-	elif Options == true:
-		$PlayerControls.visible = false
-		$PlayerInput.visible = false
-		$DialogueBox.visible = false
-	
-	elif Paused == true:
-		data.Main = false
-		$PlayerControls.visible = false
-		$PlayerInput.visible = false
-		$DialogueBox.visible = false
-	else: 
-		$PlayerControls.visible = true
-		$DialogueBox.visible = true
-		if EndLine == true:
-			$PlayerInput.visible = true
-
+	$DialogueBox.visible = Play
+	$PlayerControls.visible = Play
 
 #Main Menu-------------------------------------------------
 func Continue():
 	print("Continues Game")
+	Play = true
+	data.Main = false
+	Options = false
+	gamescene._AmbianceSelect()
+	gamescene._MusicSelect()
 
 func NewGame():
 	data.Main = false
 	Options = false
+	Play = true
 	data.LineNum = 0
 	data.SceneKey = 0
 	gamescene._AmbianceSelect()
@@ -181,6 +173,7 @@ func Gallery():
 
 func Settings():
 	Options = !Options
+	Play = !Options
 
 func Exit():
 	print("Exit Game")
@@ -188,17 +181,27 @@ func Exit():
 #Options Menu-----------------------------------------------
 func MasterVolume(MasterVol):
 	AudioServer.set_bus_volume_db(0, MasterVol)
+
 func AmbianceVolume(AmbianceVol):
 	AudioServer.set_bus_volume_db(1, AmbianceVol)
+
 func SoundVolume(SoundVol):
 	AudioServer.set_bus_volume_db(2, SoundVol)
+
 func MusicVolume(MusicVol):
 	AudioServer.set_bus_volume_db(3, MusicVol)
 
 #Pause Menu--------------------------------------------------
 func Resume():
-	Paused = !Paused
+	Paused = false
+	Options = false
+	Play = true
+
 func Save():
 	print("Saves Game")
+
 func MainMenu():
 	data.Main = !data.Main
+	Play = false
+	Options = false
+	Paused = false
