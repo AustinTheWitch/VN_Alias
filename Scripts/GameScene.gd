@@ -2,7 +2,6 @@ extends Control
 
 var data #GameData call------------------------------------------------
 
-
 #CG/Background Vars----------------------------------------------------
 var CurrentCG = Texture.new()
 var SelectedCG
@@ -15,8 +14,7 @@ var CurrentSound
 #Music Vars------------------------------------------------------------
 var SelectedMusic
 var CurrentMusic
-var SetMusicVol = 1.0
-var CurrentMusicVol
+
 func _ready():
 	data = get_node("/root/GameData")
 	

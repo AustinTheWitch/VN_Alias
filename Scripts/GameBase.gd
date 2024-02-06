@@ -31,10 +31,14 @@ var APspeed = 3.0 #Player adjusted and Essentially a Time Limit
 var Reverse = Button.new()
 
 #Options Menu Vars=-------------------------------------
+var Options = false
 var MasterVol = 0.0
 var AmbianceVol = 0.0
 var SoundVol = 0.0
 var MusicVol = 0.0
+
+#Pause Menu Vars----------------------------------------
+var Paused = false
 
 
 func _ready():
@@ -53,7 +57,7 @@ func _process(_delta):
 	_DialogueBox()
 	_AutoPlay()
 	_PlayerDialogue()
-	_MainMenu()
+	_MenuManager()
 
 func _DialogueBox():
 	Dialogue = CurrentScene[data.LineNum]
@@ -69,7 +73,6 @@ func  _PlayerDialogue():
 	pd1.text = CurrentPlay[0]
 	pd2.text = CurrentPlay[1]
 	pd3.text = CurrentPlay[2]
-	pass
 
 func _input(event):
 	if event.is_action_released("Progress") and EndLine == false and data.Main == false:
@@ -78,6 +81,9 @@ func _input(event):
 	elif data.LineNum >= MaxLine:
 		EndLine = true
 	else: EndLine = false
+	
+	if event.is_action_pressed("Pause") and data.Main == false:
+		Paused = !Paused
 
 #Player Dialogue Buttons------------------------------------
 func PlayerButton1():
@@ -113,7 +119,6 @@ func _AutoPlay():
 		if APstart >= APspeed and EndLine == false:
 			data.LineNum += 1
 			gamescene._SoundSelect()
-			gamescene._MusicSelect()
 			APstart = 0.0
 		elif data.LineNum >= MaxLine:
 			EndLine = true
@@ -128,19 +133,57 @@ func Rewind():
 			data.LineNum = 0
 	else: data.LineNum -= 1
 
-#Main Menu-------------------------------------------------
-func _MainMenu():
+func _MenuManager():
+	$OptionsPanel.visible = Options
 	$MenuPanel.visible = data.Main
-	$DialogueBox.visible = !data.Main
-	$PlayerControls.visible = !data.Main
-	if data.Main == false and EndLine == true:
-		$PlayerInput.visible = !data.Main
+	$PausePanel.visible = Paused
+	
+	if data.Main == true:
+		Paused = false
+		$PlayerControls.visible = false
+		$PlayerInput.visible = false
+		$DialogueBox.visible = false
+	
+	elif Options == true:
+		$PlayerControls.visible = false
+		$PlayerInput.visible = false
+		$DialogueBox.visible = false
+	
+	elif Paused == true:
+		data.Main = false
+		$PlayerControls.visible = false
+		$PlayerInput.visible = false
+		$DialogueBox.visible = false
+	else: 
+		$PlayerControls.visible = true
+		$DialogueBox.visible = true
+		if EndLine == true:
+			$PlayerInput.visible = true
+
+
+#Main Menu-------------------------------------------------
+func Continue():
+	print("Continues Game")
+
 func NewGame():
 	data.Main = false
+	Options = false
 	data.LineNum = 0
 	data.SceneKey = 0
 	gamescene._AmbianceSelect()
 	gamescene._MusicSelect()
+
+func Load():
+	print("Loads Game")
+
+func Gallery():
+	print("Gallery Viewer")
+
+func Settings():
+	Options = !Options
+
+func Exit():
+	print("Exit Game")
 
 #Options Menu-----------------------------------------------
 func MasterVolume(MasterVol):
@@ -151,3 +194,11 @@ func SoundVolume(SoundVol):
 	AudioServer.set_bus_volume_db(2, SoundVol)
 func MusicVolume(MusicVol):
 	AudioServer.set_bus_volume_db(3, MusicVol)
+
+#Pause Menu--------------------------------------------------
+func Resume():
+	Paused = !Paused
+func Save():
+	print("Saves Game")
+func MainMenu():
+	data.Main = !data.Main

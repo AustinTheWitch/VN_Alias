@@ -108,6 +108,7 @@ size_flags_stretch_ratio = 20.0
 text = "Is this thing on?"
 
 [node name="MenuPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.007
@@ -198,6 +199,7 @@ offset_bottom = -1.06401
 text = "Exit"
 
 [node name="OptionsPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.118
@@ -308,13 +310,101 @@ size_flags_stretch_ratio = 3.0
 min_value = -50.0
 max_value = 10.0
 
+[node name="PausePanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.014
+anchor_top = 0.025
+anchor_right = 0.118
+anchor_bottom = 0.5
+offset_left = -8.128
+offset_top = -8.0
+offset_right = 0.0639954
+
+[node name="ResumeButton" type="Button" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.043
+anchor_right = 0.56
+anchor_bottom = 0.13
+offset_top = 0.176
+offset_bottom = 0.159996
+text = "Resume"
+
+[node name="SaveButton" type="Button" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.174
+anchor_right = 0.56
+anchor_bottom = 0.261
+offset_top = -0.0320053
+offset_bottom = -0.0480042
+text = "Save"
+
+[node name="Load Game" type="Button" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.304
+anchor_right = 0.56
+anchor_bottom = 0.391
+offset_top = 0.127991
+offset_bottom = 0.111984
+text = "Load"
+
+[node name="Gallery" type="Button" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.435
+anchor_right = 0.56
+anchor_bottom = 0.522
+offset_top = -0.0800171
+offset_bottom = -0.0960083
+text = "Gallery"
+
+[node name="Settings" type="Button" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.565
+anchor_right = 0.56
+anchor_bottom = 0.649
+offset_top = 0.0800018
+offset_bottom = 0.167984
+text = "Settings"
+
+[node name="Main Menu" type="Button" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.696
+anchor_right = 0.56
+anchor_bottom = 0.783
+offset_top = -0.128021
+offset_bottom = -0.144012
+text = "Main Menu"
+
 [connection signal="pressed" from="PlayerControls/AutoPlay" to="." method="APbutton"]
 [connection signal="pressed" from="PlayerControls/Rewind" to="." method="Rewind"]
 [connection signal="pressed" from="PlayerInput/Button" to="." method="PlayerButton1"]
 [connection signal="pressed" from="PlayerInput/Button2" to="." method="PlayerButton2"]
 [connection signal="pressed" from="PlayerInput/Button3" to="." method="PlayerButton3"]
+[connection signal="pressed" from="MenuPanel/Continue" to="." method="Continue"]
 [connection signal="pressed" from="MenuPanel/New Game" to="." method="NewGame"]
+[connection signal="pressed" from="MenuPanel/Load Game" to="." method="Load"]
+[connection signal="pressed" from="MenuPanel/Gallery" to="." method="Gallery"]
+[connection signal="pressed" from="MenuPanel/Settings" to="." method="Settings"]
+[connection signal="pressed" from="MenuPanel/Exit" to="." method="Exit"]
 [connection signal="value_changed" from="OptionsPanel/MasterVol/MasterSlider" to="." method="MasterVolume"]
 [connection signal="value_changed" from="OptionsPanel/AmbianceVol/AmbianceSlider" to="." method="AmbianceVolume"]
 [connection signal="value_changed" from="OptionsPanel/SoundVol/SoundSlider" to="." method="SoundVolume"]
 [connection signal="value_changed" from="OptionsPanel/MusicVol/MusicSlider" to="." method="MusicVolume"]
+[connection signal="pressed" from="PausePanel/ResumeButton" to="." method="Resume"]
+[connection signal="pressed" from="PausePanel/SaveButton" to="." method="Save"]
+[connection signal="pressed" from="PausePanel/Load Game" to="." method="Load"]
+[connection signal="pressed" from="PausePanel/Gallery" to="." method="Gallery"]
+[connection signal="pressed" from="PausePanel/Settings" to="." method="Settings"]
+[connection signal="pressed" from="PausePanel/Main Menu" to="." method="MainMenu"]
