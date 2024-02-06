@@ -55,6 +55,20 @@ var AmbianceScript = {
 	"Scene4": "Rain",
 }
 
+var SoundScript = {
+	"Scene1": ["None", "Sword", "None"],
+	"Scene2": ["Sword", "None"],
+	"Scene3": ["Sword", "Sword"],
+	"Scene4": ["None", "None"]
+}
+
+var MusicScript = {
+	"Scene1": "FairyTail",
+	"Scene2": "Relax",
+	"Scene3": "FairyTail",
+	"Scene4": "None",
+	}
+
 #Galleries Below--------------------------------------------------------------------------------------
 var CharacterGallery = {
 	"None": null,
@@ -72,6 +86,17 @@ var AmbianceGallery = {
 	"Crowded Room": load("res://Audio/Ambiance/CrowdedRoom.mp3")
 }
 
+var SoundGallery = {
+	"Sword": load("res://Audio/Sound/SwordSlash.mp3"),
+	"None": null
+}
+
+var MusicGallery = {
+	"FairyTail": load("res://Audio/Music/FairyTale.mp3"),
+	"Relax": load("res://Audio/Music/Relax.mp3"),
+	"None": null
+}
+
 var SceneKey = 0
 var LineNum = 0
-
+var Main = true

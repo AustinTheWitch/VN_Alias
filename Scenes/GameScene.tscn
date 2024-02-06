@@ -20,4 +20,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Ambiance" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
 bus = &"Ambiance"
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+bus = &"Sound"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+volume_db = -0.965
+bus = &"Music"

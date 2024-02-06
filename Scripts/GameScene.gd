@@ -7,17 +7,21 @@ var data #GameData call------------------------------------------------
 var CurrentCG = Texture.new()
 var SelectedCG
 #Ambiance Vars---------------------------------------------------------
-var AmbiabceStream = AudioStreamPlayer.new()
-var CurrentOmbie = AudioStreamMP3.new()
+var CurrentOmbie
 var SelectedOmbie
-
+#Sound Effect Vars-----------------------------------------------------
+var SelectedSound = []
+var CurrentSound
+#Music Vars------------------------------------------------------------
+var SelectedMusic
+var CurrentMusic
+var SetMusicVol = 1.0
+var CurrentMusicVol
 func _ready():
 	data = get_node("/root/GameData")
-
 	
 func _process(_delta):
 	_SceneSelect()
-	_AmbianceSelect()
 
 func _SceneSelect():
 	SelectedCG = data.CGscript.values()[data.SceneKey]
@@ -28,4 +32,16 @@ func _AmbianceSelect():
 	SelectedOmbie = data.AmbianceScript.values()[data.SceneKey]
 	CurrentOmbie = data.AmbianceGallery.get(SelectedOmbie)
 	$Ambiance.stream = CurrentOmbie
+	$Ambiance.play()
 
+func _SoundSelect():
+	SelectedSound = data.SoundScript.values()[data.SceneKey]
+	CurrentSound = data.SoundGallery.get(SelectedSound[data.LineNum])
+	$Sound.stream = CurrentSound
+	$Sound.play()
+
+func _MusicSelect():
+	SelectedMusic = data.MusicScript.values()[data.SceneKey]
+	CurrentMusic = data.MusicGallery.get(SelectedMusic)
+	$Music.stream = CurrentMusic
+	$Music.play()
