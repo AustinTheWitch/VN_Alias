@@ -1,6 +1,6 @@
 extends Control
 
-var data #GameData call---------
+var data #Game Data call
 var sprites #Sprite Script call
 var gamescene #Game Scene Script call
 
@@ -33,13 +33,19 @@ var Reverse = Button.new()
 
 #Options Menu Vars=-------------------------------------
 var Options = false
-var MasterVol = 0.0
-var AmbianceVol = 0.0
-var SoundVol = 0.0
-var MusicVol = 0.0
+var MasterVol = -10.0
+var AmbianceVol = -10.0
+var SoundVol = -10.0
+var MusicVol = -10.0
 
 #Pause Menu Vars----------------------------------------
 var Paused = false
+
+#Load/Save Game Vars-----------------------------------------
+var Saving = false
+var Loading = false
+var F1 = FileAccess.open("user://myfile.name", FileAccess.READ)
+var F1path = "user://sceneline.save"
 
 
 func _ready():
@@ -49,6 +55,7 @@ func _ready():
 	APtoggled = false
 	AP = $PlayerControls/AutoPlay
 	Reverse = $PlayerControls/Rewind
+
 
 func _process(_delta):
 	MaxLine = CurrentScene.size() - 1
@@ -147,6 +154,7 @@ func _MenuManager():
 	$DialogueBox.visible = Play
 	$PlayerControls.visible = Play
 
+
 #Main Menu-------------------------------------------------
 func Continue():
 	print("Continues Game")
@@ -165,8 +173,21 @@ func NewGame():
 	gamescene._AmbianceSelect()
 	gamescene._MusicSelect()
 
-func Load():
-	print("Loads Game")
+func LoadGame():
+	if FileAccess.file_exists(F1path):
+		print("File Found")
+		var file = FileAccess.open(F1path, FileAccess.READ)
+		data.LineNum = file.get_var(data.LineNum)
+		data.SceneKey = file.get_var(data.SceneKey)
+		Play = true
+		data.Main = false
+		Paused = false
+		Options = false
+		gamescene._AmbianceSelect()
+		gamescene._MusicSelect()
+	else:
+		print("File not found")
+	
 
 func Gallery():
 	print("Gallery Viewer")
@@ -197,8 +218,10 @@ func Resume():
 	Options = false
 	Play = true
 
-func Save():
-	print("Saves Game")
+func SaveGame():
+	var file = FileAccess.open(F1path, FileAccess.WRITE)
+	file.store_var(data.LineNum)
+	file.store_var(data.SceneKey)
 
 func MainMenu():
 	data.Main = !data.Main

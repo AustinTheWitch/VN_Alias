@@ -24,8 +24,10 @@ volume_db = -10.0
 bus = &"Ambiance"
 
 [node name="Sound" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+autoplay = true
 bus = &"Sound"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-volume_db = -0.965
+volume_db = -10.0
 bus = &"Music"
