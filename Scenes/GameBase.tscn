@@ -429,7 +429,6 @@ offset_right = -0.464005
 offset_bottom = 0.391998
 mouse_filter = 2
 expand_mode = 2
-metadata/_edit_lock_ = true
 
 [node name="File2" type="Button" parent="SaveLoadWindow/SaveFileBox/Row1"]
 layout_mode = 2
@@ -447,7 +446,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 expand_mode = 2
-metadata/_edit_lock_ = true
 
 [node name="File3" type="Button" parent="SaveLoadWindow/SaveFileBox/Row1"]
 layout_mode = 2
@@ -465,7 +463,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 expand_mode = 2
-metadata/_edit_lock_ = true
 
 [node name="File4" type="Button" parent="SaveLoadWindow/SaveFileBox/Row1"]
 layout_mode = 2
@@ -483,7 +480,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 expand_mode = 2
-metadata/_edit_lock_ = true
 
 [node name="Row2" type="HBoxContainer" parent="SaveLoadWindow/SaveFileBox"]
 layout_mode = 2
@@ -505,7 +501,6 @@ offset_right = -0.464005
 offset_bottom = 0.391998
 mouse_filter = 2
 expand_mode = 2
-metadata/_edit_lock_ = true
 
 [node name="File6" type="Button" parent="SaveLoadWindow/SaveFileBox/Row2"]
 layout_mode = 2
@@ -523,7 +518,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 expand_mode = 2
-metadata/_edit_lock_ = true
 
 [node name="File7" type="Button" parent="SaveLoadWindow/SaveFileBox/Row2"]
 layout_mode = 2
@@ -541,7 +535,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 expand_mode = 2
-metadata/_edit_lock_ = true
 
 [node name="File8" type="Button" parent="SaveLoadWindow/SaveFileBox/Row2"]
 layout_mode = 2
@@ -559,7 +552,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 expand_mode = 2
-metadata/_edit_lock_ = true
 
 [node name="Row3" type="HBoxContainer" parent="SaveLoadWindow/SaveFileBox"]
 layout_mode = 2
@@ -581,7 +573,6 @@ offset_right = -0.464005
 offset_bottom = 0.391998
 mouse_filter = 2
 expand_mode = 2
-metadata/_edit_lock_ = true
 
 [node name="File10" type="Button" parent="SaveLoadWindow/SaveFileBox/Row3"]
 layout_mode = 2
@@ -599,7 +590,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 expand_mode = 2
-metadata/_edit_lock_ = true
 
 [node name="File11" type="Button" parent="SaveLoadWindow/SaveFileBox/Row3"]
 layout_mode = 2
@@ -617,7 +607,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 expand_mode = 2
-metadata/_edit_lock_ = true
 
 [node name="File12" type="Button" parent="SaveLoadWindow/SaveFileBox/Row3"]
 layout_mode = 2
@@ -635,7 +624,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 expand_mode = 2
-metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="PlayerControls/AutoPlay" to="." method="APbutton"]
 [connection signal="pressed" from="PlayerControls/Rewind" to="." method="Rewind"]

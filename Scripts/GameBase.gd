@@ -46,6 +46,8 @@ var Saving = false
 var Loading = false
 var SaveFile = FileAccess.open("user://myfile.name", FileAccess.READ)
 var SavePath = "user://sceneline.save"
+var SaveImages = ["Test1", "Test2", "Test3", "Test4", "Test5"]
+var FileNum = []
 
 
 func _ready():
@@ -55,7 +57,7 @@ func _ready():
 	APtoggled = false
 	AP = $PlayerControls/AutoPlay
 	Reverse = $PlayerControls/Rewind
-
+	FileNum = get_tree().get_nodes_in_group("Files")
 
 func _process(_delta):
 	MaxLine = CurrentScene.size() - 1
@@ -66,6 +68,7 @@ func _process(_delta):
 	_AutoPlay()
 	_PlayerDialogue()
 	_MenuManager()
+	_SaveImage()
 
 func _DialogueBox():
 	Dialogue = CurrentScene[data.LineNum]
@@ -176,9 +179,11 @@ func NewGame():
 	Saving = false
 
 func LoadGame():
-	Loading = true
+	Loading = !Loading
 	Saving = false
 	Play = false
+	_SaveImage()
+
 
 func Gallery():
 	print("Gallery Viewer")
@@ -191,16 +196,16 @@ func Exit():
 	print("Exit Game")
 
 #Options Menu-----------------------------------------------
-func MasterVolume(MasterVol):
+func MasterVolume(_Master):
 	AudioServer.set_bus_volume_db(0, MasterVol)
 
-func AmbianceVolume(AmbianceVol):
+func AmbianceVolume(_Ambiance):
 	AudioServer.set_bus_volume_db(1, AmbianceVol)
 
-func SoundVolume(SoundVol):
+func SoundVolume(_Sound):
 	AudioServer.set_bus_volume_db(2, SoundVol)
 
-func MusicVolume(MusicVol):
+func MusicVolume(_Music):
 	AudioServer.set_bus_volume_db(3, MusicVol)
 
 #Pause Menu--------------------------------------------------
@@ -212,10 +217,10 @@ func Resume():
 	Loading = false
 
 func SaveGame():
-	Saving = true
+	Saving = !Saving
 	Loading = false
 	Play = false
-	
+	_SaveImage()
 
 func MainMenu():
 	data.Main = !data.Main
@@ -249,7 +254,13 @@ func _Loading():
 		print("File not found")
 
 #Save Files----------------------------------------------------
-#Row 1 Files
+func _SaveImage():
+	var file1 = FileAccess.open("user://r1f1.save", FileAccess.READ)
+	SaveImages[0] = (data.CGscript.values()[file1.get_var(data.SceneKey)])
+	FileNum[0].texture = data.BackdropGallery.get(SaveImages[0])
+	print(data.CGscript.values()[file1.get_var(data.SceneKey)])
+
+#Row 1 Files---------------------------------------------------
 func File1():
 	SavePath = "user://r1f1.save"
 	print (SavePath)
