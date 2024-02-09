@@ -8,8 +8,9 @@ anchor_left = 0.007
 anchor_top = 0.012
 anchor_right = 1.0
 anchor_bottom = 0.963
-offset_left = -8.064
+offset_left = -0.0640001
 offset_top = -7.776
+offset_right = 8.0
 offset_bottom = 15.976
 grow_horizontal = 2
 grow_vertical = 2
@@ -109,7 +110,6 @@ size_flags_stretch_ratio = 20.0
 text = "Is this thing on?"
 
 [node name="MenuPanel" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.007
@@ -203,13 +203,12 @@ text = "Exit"
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.118
+anchor_left = 0.125
 anchor_top = 0.012
-anchor_right = 0.451
+anchor_right = 0.458
 anchor_bottom = 0.412
-offset_left = 0.0639954
 offset_top = 0.32
-offset_right = 0.447937
+offset_right = 0.383911
 offset_bottom = 0.319977
 
 [node name="MasterVol" type="HBoxContainer" parent="OptionsPanel"]
@@ -236,6 +235,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 min_value = -50.0
 max_value = 10.0
+value = -10.0
 
 [node name="AmbianceVol" type="HBoxContainer" parent="OptionsPanel"]
 layout_mode = 1
@@ -260,6 +260,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 min_value = -50.0
 max_value = 10.0
+value = -10.0
 
 [node name="SoundVol" type="HBoxContainer" parent="OptionsPanel"]
 layout_mode = 1
@@ -285,6 +286,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 min_value = -50.0
 max_value = 10.0
+value = -10.0
 
 [node name="MusicVol" type="HBoxContainer" parent="OptionsPanel"]
 layout_mode = 1
@@ -310,6 +312,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 min_value = -50.0
 max_value = 10.0
+value = -10.0
 
 [node name="PausePanel" type="Panel" parent="."]
 visible = false
@@ -389,6 +392,251 @@ offset_top = -0.128021
 offset_bottom = -0.144012
 text = "Main Menu"
 
+[node name="SaveLoadWindow" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.025
+anchor_right = 0.507
+anchor_bottom = 0.3
+offset_right = -0.0640259
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SaveFileBox" type="VBoxContainer" parent="SaveLoadWindow"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Row1" type="HBoxContainer" parent="SaveLoadWindow/SaveFileBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="File1" type="Button" parent="SaveLoadWindow/SaveFileBox/Row1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 25.0
+text = "1"
+
+[node name="TextureRect" type="TextureRect" parent="SaveLoadWindow/SaveFileBox/Row1/File1" groups=["Files"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.008
+anchor_bottom = 1.032
+offset_right = -0.464005
+offset_bottom = 0.391998
+mouse_filter = 2
+expand_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="File2" type="Button" parent="SaveLoadWindow/SaveFileBox/Row1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 25.0
+text = "2"
+
+[node name="TextureRect" type="TextureRect" parent="SaveLoadWindow/SaveFileBox/Row1/File2" groups=["Files"]]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="File3" type="Button" parent="SaveLoadWindow/SaveFileBox/Row1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 25.0
+text = "3"
+
+[node name="TextureRect" type="TextureRect" parent="SaveLoadWindow/SaveFileBox/Row1/File3" groups=["Files"]]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="File4" type="Button" parent="SaveLoadWindow/SaveFileBox/Row1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 25.0
+text = "4"
+
+[node name="TextureRect" type="TextureRect" parent="SaveLoadWindow/SaveFileBox/Row1/File4" groups=["Files"]]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="Row2" type="HBoxContainer" parent="SaveLoadWindow/SaveFileBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="File5" type="Button" parent="SaveLoadWindow/SaveFileBox/Row2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 25.0
+text = "1"
+
+[node name="TextureRect" type="TextureRect" parent="SaveLoadWindow/SaveFileBox/Row2/File5" groups=["Files"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.008
+anchor_bottom = 1.032
+offset_right = -0.464005
+offset_bottom = 0.391998
+mouse_filter = 2
+expand_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="File6" type="Button" parent="SaveLoadWindow/SaveFileBox/Row2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 25.0
+text = "2"
+
+[node name="TextureRect" type="TextureRect" parent="SaveLoadWindow/SaveFileBox/Row2/File6" groups=["Files"]]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="File7" type="Button" parent="SaveLoadWindow/SaveFileBox/Row2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 25.0
+text = "3"
+
+[node name="TextureRect" type="TextureRect" parent="SaveLoadWindow/SaveFileBox/Row2/File7" groups=["Files"]]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="File8" type="Button" parent="SaveLoadWindow/SaveFileBox/Row2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 25.0
+text = "4"
+
+[node name="TextureRect" type="TextureRect" parent="SaveLoadWindow/SaveFileBox/Row2/File8" groups=["Files"]]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="Row3" type="HBoxContainer" parent="SaveLoadWindow/SaveFileBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="File9" type="Button" parent="SaveLoadWindow/SaveFileBox/Row3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 25.0
+text = "1"
+
+[node name="TextureRect" type="TextureRect" parent="SaveLoadWindow/SaveFileBox/Row3/File9" groups=["Files"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.008
+anchor_bottom = 1.032
+offset_right = -0.464005
+offset_bottom = 0.391998
+mouse_filter = 2
+expand_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="File10" type="Button" parent="SaveLoadWindow/SaveFileBox/Row3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 25.0
+text = "2"
+
+[node name="TextureRect" type="TextureRect" parent="SaveLoadWindow/SaveFileBox/Row3/File10" groups=["Files"]]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="File11" type="Button" parent="SaveLoadWindow/SaveFileBox/Row3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 25.0
+text = "3"
+
+[node name="TextureRect" type="TextureRect" parent="SaveLoadWindow/SaveFileBox/Row3/File11" groups=["Files"]]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="File12" type="Button" parent="SaveLoadWindow/SaveFileBox/Row3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 25.0
+text = "4"
+
+[node name="TextureRect" type="TextureRect" parent="SaveLoadWindow/SaveFileBox/Row3/File12" groups=["Files"]]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 2
+metadata/_edit_lock_ = true
+
 [connection signal="pressed" from="PlayerControls/AutoPlay" to="." method="APbutton"]
 [connection signal="pressed" from="PlayerControls/Rewind" to="." method="Rewind"]
 [connection signal="pressed" from="PlayerInput/Button" to="." method="PlayerButton1"]
@@ -410,3 +658,15 @@ text = "Main Menu"
 [connection signal="pressed" from="PausePanel/Gallery" to="." method="Gallery"]
 [connection signal="pressed" from="PausePanel/Settings" to="." method="Settings"]
 [connection signal="pressed" from="PausePanel/Main Menu" to="." method="MainMenu"]
+[connection signal="pressed" from="SaveLoadWindow/SaveFileBox/Row1/File1" to="." method="File1"]
+[connection signal="pressed" from="SaveLoadWindow/SaveFileBox/Row1/File2" to="." method="File2"]
+[connection signal="pressed" from="SaveLoadWindow/SaveFileBox/Row1/File3" to="." method="File3"]
+[connection signal="pressed" from="SaveLoadWindow/SaveFileBox/Row1/File4" to="." method="File4"]
+[connection signal="pressed" from="SaveLoadWindow/SaveFileBox/Row2/File5" to="." method="File5"]
+[connection signal="pressed" from="SaveLoadWindow/SaveFileBox/Row2/File6" to="." method="File6"]
+[connection signal="pressed" from="SaveLoadWindow/SaveFileBox/Row2/File7" to="." method="File7"]
+[connection signal="pressed" from="SaveLoadWindow/SaveFileBox/Row2/File8" to="." method="File8"]
+[connection signal="pressed" from="SaveLoadWindow/SaveFileBox/Row3/File9" to="." method="File9"]
+[connection signal="pressed" from="SaveLoadWindow/SaveFileBox/Row3/File10" to="." method="File10"]
+[connection signal="pressed" from="SaveLoadWindow/SaveFileBox/Row3/File11" to="." method="File11"]
+[connection signal="pressed" from="SaveLoadWindow/SaveFileBox/Row3/File12" to="." method="File12"]

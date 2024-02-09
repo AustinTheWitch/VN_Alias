@@ -33,10 +33,10 @@ var Reverse = Button.new()
 
 #Options Menu Vars=-------------------------------------
 var Options = false
-var MasterVol = -10.0
-var AmbianceVol = -10.0
-var SoundVol = -10.0
-var MusicVol = -10.0
+var MasterVol
+var AmbianceVol 
+var SoundVol
+var MusicVol
 
 #Pause Menu Vars----------------------------------------
 var Paused = false
@@ -44,8 +44,8 @@ var Paused = false
 #Load/Save Game Vars-----------------------------------------
 var Saving = false
 var Loading = false
-var F1 = FileAccess.open("user://myfile.name", FileAccess.READ)
-var F1path = "user://sceneline.save"
+var SaveFile = FileAccess.open("user://myfile.name", FileAccess.READ)
+var SavePath = "user://sceneline.save"
 
 
 func _ready():
@@ -153,7 +153,7 @@ func _MenuManager():
 	$PausePanel.visible = Paused
 	$DialogueBox.visible = Play
 	$PlayerControls.visible = Play
-
+	$SaveLoadWindow.visible = Loading or Saving
 
 #Main Menu-------------------------------------------------
 func Continue():
@@ -172,29 +172,20 @@ func NewGame():
 	data.SceneKey = 0
 	gamescene._AmbianceSelect()
 	gamescene._MusicSelect()
+	Loading = false
+	Saving = false
 
 func LoadGame():
-	if FileAccess.file_exists(F1path):
-		print("File Found")
-		var file = FileAccess.open(F1path, FileAccess.READ)
-		data.LineNum = file.get_var(data.LineNum)
-		data.SceneKey = file.get_var(data.SceneKey)
-		Play = true
-		data.Main = false
-		Paused = false
-		Options = false
-		gamescene._AmbianceSelect()
-		gamescene._MusicSelect()
-	else:
-		print("File not found")
-	
+	Loading = true
+	Saving = false
+	Play = false
 
 func Gallery():
 	print("Gallery Viewer")
 
 func Settings():
 	Options = !Options
-	Play = !Options
+	Play = false
 
 func Exit():
 	print("Exit Game")
@@ -217,14 +208,119 @@ func Resume():
 	Paused = false
 	Options = false
 	Play = true
+	Saving = false
+	Loading = false
 
 func SaveGame():
-	var file = FileAccess.open(F1path, FileAccess.WRITE)
-	file.store_var(data.LineNum)
-	file.store_var(data.SceneKey)
+	Saving = true
+	Loading = false
+	Play = false
+	
 
 func MainMenu():
 	data.Main = !data.Main
 	Play = false
 	Options = false
 	Paused = false
+	Loading = false
+	Saving = false
+
+func _Saving():
+	var file = FileAccess.open(SavePath, FileAccess.WRITE)
+	file.store_var(data.LineNum)
+	file.store_var(data.SceneKey)
+	Saving = false
+	
+
+func _Loading():
+	if FileAccess.file_exists(SavePath):
+		print("File Found")
+		var file = FileAccess.open(SavePath, FileAccess.READ)
+		data.LineNum = file.get_var(data.LineNum)
+		data.SceneKey = file.get_var(data.SceneKey)
+		gamescene._AmbianceSelect()
+		gamescene._MusicSelect()
+		Play = true
+		data.Main = false
+		Paused = false
+		Options = false
+		Loading = false
+	else:
+		print("File not found")
+
+#Save Files----------------------------------------------------
+#Row 1 Files
+func File1():
+	SavePath = "user://r1f1.save"
+	print (SavePath)
+	if Loading == true and Saving == false:
+		_Loading()
+	else: _Saving()
+func File2():
+	SavePath = "user://r1f2.save"
+	print(SavePath)
+	if (Loading == true and Saving == false):
+		_Loading()
+	else: _Saving()
+func File3():
+	SavePath = "user://r1f3.save"
+	print(SavePath)
+	if (Loading == true and Saving == false):
+		_Loading()
+	else: _Saving()
+func File4():
+	SavePath = "user://r1f4.save"
+	print(SavePath)
+	if (Loading == true and Saving == false):
+		_Loading()
+	else: _Saving()
+#Row 2 Files-------------------------------------------------
+func File5():
+	SavePath = "user://r2f1.save"
+	print(SavePath)
+	if (Loading == true and Saving == false):
+		_Loading()
+	else: _Saving()
+func File6():
+	SavePath = "user://r2f2.save"
+	print(SavePath)
+	if (Loading == true and Saving == false):
+		_Loading()
+	else: _Saving()
+func File7():
+	SavePath = "user://r2f3.save"
+	print(SavePath)
+	if (Loading == true and Saving == false):
+		_Loading()
+	else: _Saving()
+func File8():
+	SavePath = "user://r2f4.save"
+	print(SavePath)
+	if (Loading == true and Saving == false):
+		_Loading()
+	else: _Saving()
+#Row 3 Files------------------------------------------------
+func File9():
+	SavePath = "user://r3f1.save"
+	print(SavePath)
+	if (Loading == true and Saving == false):
+		_Loading()
+	else: _Saving()
+func File10():
+	SavePath = "user://r3f2.save"
+	print(SavePath)
+	if (Loading == true and Saving == false):
+		_Loading()
+	else: _Saving()
+func File11():
+	SavePath = "user://r3f3.save"
+	print(SavePath)
+	if (Loading == true and Saving == false):
+		_Loading()
+	else: _Saving()
+func File12():
+	SavePath = "user://r3f4.save"
+	print(SavePath)
+	if (Loading == true and Saving == false):
+		_Loading()
+	else: _Saving()
