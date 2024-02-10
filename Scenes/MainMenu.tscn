@@ -1,0 +1,108 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlr1f68vghmlx"]
+
+[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_jdlxn"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jdlxn")
+
+[node name="MenuPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.007
+anchor_top = 0.012
+anchor_right = 0.215
+anchor_bottom = 0.679
+offset_left = -0.0640001
+offset_top = 0.224
+offset_right = 0.319992
+offset_bottom = 0.00799561
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Continue" type="Button" parent="MenuPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.062
+anchor_top = 0.067
+anchor_right = 0.467
+anchor_bottom = 0.187
+offset_left = 0.12
+offset_top = 0.0559998
+offset_right = -0.0800018
+offset_bottom = 0.215996
+text = "Continue"
+alignment = 0
+
+[node name="New Game" type="Button" parent="MenuPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.062
+anchor_top = 0.222
+anchor_right = 0.467
+anchor_bottom = 0.34
+offset_left = 0.12
+offset_top = 0.095993
+offset_right = -0.0800018
+offset_bottom = 0.119995
+text = "New Game"
+alignment = 0
+
+[node name="Load Game" type="Button" parent="MenuPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.062
+anchor_top = 0.375
+anchor_right = 0.812
+anchor_bottom = 0.5
+offset_left = 0.12
+offset_right = -82.88
+text = "Load Game"
+alignment = 0
+
+[node name="Gallery" type="Button" parent="MenuPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.062
+anchor_top = 0.53
+anchor_right = 0.467
+anchor_bottom = 0.652
+offset_left = 0.12
+offset_top = 0.0399933
+offset_right = -0.0800018
+offset_bottom = -0.664001
+text = "Gallery"
+alignment = 0
+
+[node name="Settings" type="Button" parent="MenuPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.062
+anchor_top = 0.692
+anchor_right = 0.467
+anchor_bottom = 0.812
+offset_left = 0.12
+offset_top = 0.0559998
+offset_right = -0.0800018
+offset_bottom = 0.216003
+text = "Settings"
+alignment = 0
+
+[node name="Exit" type="Button" parent="MenuPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.062
+anchor_top = 0.845
+anchor_right = 0.467
+anchor_bottom = 0.963
+offset_left = 0.119999
+offset_top = -0.0400085
+offset_right = -0.0800018
+offset_bottom = -0.0160217
+text = "Exit Game"
+alignment = 0

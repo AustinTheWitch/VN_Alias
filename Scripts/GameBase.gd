@@ -68,7 +68,6 @@ func _process(_delta):
 	_AutoPlay()
 	_PlayerDialogue()
 	_MenuManager()
-	_SaveImage()
 
 func _DialogueBox():
 	Dialogue = CurrentScene[data.LineNum]
@@ -98,6 +97,8 @@ func _input(event):
 		Play = !Paused
 		if Options == true and Paused == false:
 			Options = false
+			Loading = false
+			Saving = false
 		else: Options = Options
 
 
@@ -220,7 +221,6 @@ func SaveGame():
 	Saving = !Saving
 	Loading = false
 	Play = false
-	_SaveImage()
 
 func MainMenu():
 	data.Main = !data.Main
