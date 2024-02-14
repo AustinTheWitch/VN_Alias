@@ -106,3 +106,10 @@ offset_right = -0.0800018
 offset_bottom = -0.0160217
 text = "Exit Game"
 alignment = 0
+
+[connection signal="pressed" from="MenuPanel/Continue" to="." method="_continuegame"]
+[connection signal="pressed" from="MenuPanel/New Game" to="." method="_newgame"]
+[connection signal="pressed" from="MenuPanel/Load Game" to="." method="_loadgame"]
+[connection signal="pressed" from="MenuPanel/Gallery" to="." method="_gallery"]
+[connection signal="pressed" from="MenuPanel/Settings" to="." method="_settings"]
+[connection signal="pressed" from="MenuPanel/Exit" to="." method="_exitgame"]

@@ -19,26 +19,26 @@ func _ready():
 	data = get_node("/root/GameData")
 	
 func _process(_delta):
-	_SceneSelect()
+	_sceneselect()
 
-func _SceneSelect():
+func _sceneselect():
 	SelectedCG = data.CGscript.values()[data.SceneKey]
 	CurrentCG = data.BackdropGallery.get(SelectedCG)
 	$Background.texture = CurrentCG
 
-func _AmbianceSelect():
+func _ambianceselect():
 	SelectedOmbie = data.AmbianceScript.values()[data.SceneKey]
 	CurrentOmbie = data.AmbianceGallery.get(SelectedOmbie)
 	$Ambiance.stream = CurrentOmbie
 	$Ambiance.play()
 
-func _SoundSelect():
+func _soundselect():
 	SelectedSound = data.SoundScript.values()[data.SceneKey]
 	CurrentSound = data.SoundGallery.get(SelectedSound[data.LineNum])
 	$Sound.stream = CurrentSound
 	$Sound.play()
 
-func _MusicSelect():
+func _musicselect():
 	SelectedMusic = data.MusicScript.values()[data.SceneKey]
 	CurrentMusic = data.MusicGallery.get(SelectedMusic)
 	$Music.stream = CurrentMusic

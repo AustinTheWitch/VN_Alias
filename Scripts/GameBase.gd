@@ -87,7 +87,7 @@ func  _PlayerDialogue():
 func _input(event):
 	if event.is_action_released("Progress") and EndLine == false and data.Main == false:
 		data.LineNum += 1
-		gamescene._SoundSelect()
+		gamescene._soundselect()
 	elif data.LineNum >= MaxLine and Play == true:
 		EndLine = true
 	else: EndLine = false
@@ -107,25 +107,25 @@ func PlayerButton1():
 	if pd1.button_pressed and EndLine == true:
 		data.LineNum = 0
 		data.SceneKey = CurrentPlay[3]
-		gamescene._AmbianceSelect()
-		gamescene._SoundSelect()
-		gamescene._MusicSelect()
+		gamescene._ambianceselect()
+		gamescene._soundselect()
+		gamescene._musicselect()
 
 func PlayerButton2():
 	if pd2.button_pressed and EndLine == true:
 		data.LineNum = 0
 		data.SceneKey = CurrentPlay[4]
-		gamescene._AmbianceSelect()
-		gamescene._SoundSelect()
-		gamescene._MusicSelect()
+		gamescene._ambianceselect()
+		gamescene._soundselect()
+		gamescene._musicselect()
 
 func PlayerButton3():
 	if pd3.button_pressed and EndLine == true:
 		data.LineNum = 0
 		data.SceneKey = CurrentPlay[5]
-		gamescene._AmbianceSelect()
-		gamescene._SoundSelect()
-		gamescene._MusicSelect()
+		gamescene._ambianceselect()
+		gamescene._soundselect()
+		gamescene._musicselect()
 
 #AutoPlay Function-----------------------------------------
 func APbutton():
@@ -136,7 +136,7 @@ func _AutoPlay():
 		APstart += get_process_delta_time() * 1.0
 		if APstart >= APspeed and EndLine == false:
 			data.LineNum += 1
-			gamescene._SoundSelect()
+			gamescene._soundselect()
 			APstart = 0.0
 		elif data.LineNum >= MaxLine:
 			EndLine = true
@@ -165,8 +165,8 @@ func Continue():
 	Play = true
 	data.Main = false
 	Options = false
-	gamescene._AmbianceSelect()
-	gamescene._MusicSelect()
+	gamescene._ambianceselect()
+	gamescene._musicselect()
 
 func NewGame():
 	data.Main = false
@@ -174,8 +174,8 @@ func NewGame():
 	Play = true
 	data.LineNum = 0
 	data.SceneKey = 0
-	gamescene._AmbianceSelect()
-	gamescene._MusicSelect()
+	gamescene._ambianceselect()
+	gamescene._musicselect()
 	Loading = false
 	Saving = false
 
