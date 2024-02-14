@@ -1,6 +1,5 @@
 extends Control
 
-
 var game #GameData call---------
 var player #player call
 

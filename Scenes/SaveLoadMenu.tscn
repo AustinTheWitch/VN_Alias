@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmeeiape4lwdj"]
+
+[ext_resource type="Script" path="res://Scripts/SaveLoadMenu.gd" id="1_6fgpm"]
+[ext_resource type="Texture2D" uid="uid://d34mulqiyc4ud" path="res://Art/CG/FullMoon.jpg" id="1_gxs1h"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_6fgpm")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.222
+anchor_top = 0.025
+anchor_right = 0.951
+anchor_bottom = 0.691
+offset_left = 0.255981
+offset_top = -0.200001
+offset_right = 0.447998
+offset_bottom = 0.231964
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SaveFileBox" type="VBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.037
+anchor_right = 0.933
+anchor_bottom = 0.875
+offset_left = -0.400001
+offset_top = -1.984
+offset_right = 0.279968
+offset_bottom = -3.05176e-05
+
+[node name="File1Box" type="HBoxContainer" parent="Background/SaveFileBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SaveText" type="TextEdit" parent="Background/SaveFileBox/File1Box"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Save File"
+
+[node name="SaveButton" type="TextureButton" parent="Background/SaveFileBox/File1Box"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+texture_normal = ExtResource("1_gxs1h")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ExitButton" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.952
+anchor_top = 0.019
+anchor_right = 0.99
+anchor_bottom = 0.093
+offset_left = 0.320007
+offset_top = -0.208
+offset_right = 0.399963
+offset_bottom = -0.176003
+text = "x"
+
+[connection signal="pressed" from="Background/ExitButton" to="." method="_exitsaveload"]

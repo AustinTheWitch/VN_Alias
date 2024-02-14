@@ -1,0 +1,146 @@
+[gd_scene load_steps=2 format=3 uid="uid://w2mfinth18hq"]
+
+[ext_resource type="Script" path="res://Scripts/SettingMenu.gd" id="1_oeh7i"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_oeh7i")
+
+[node name="OptionsPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.222
+anchor_top = 0.012
+anchor_right = 0.556
+anchor_bottom = 0.383
+offset_left = 0.255981
+offset_top = 0.224
+offset_right = -0.512085
+offset_bottom = -0.184006
+
+[node name="ScrollParent" type="ScrollContainer" parent="OptionsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.042
+anchor_top = 0.067
+anchor_right = 0.958
+anchor_bottom = 0.896
+offset_left = -0.128002
+offset_top = -0.0799999
+offset_right = 0.127991
+offset_bottom = -0.0400085
+
+[node name="SettingScroll" type="VBoxContainer" parent="OptionsPanel/ScrollParent"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 20.0
+
+[node name="Audio" type="Label" parent="OptionsPanel/ScrollParent/SettingScroll"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_stretch_ratio = 0.2
+text = "Audio"
+
+[node name="MasterVol" type="HBoxContainer" parent="OptionsPanel/ScrollParent/SettingScroll"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MasterText" type="TextEdit" parent="OptionsPanel/ScrollParent/SettingScroll/MasterVol"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Master"
+
+[node name="MasterSlider" type="HSlider" parent="OptionsPanel/ScrollParent/SettingScroll/MasterVol"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+min_value = -50.0
+max_value = 10.0
+value = -10.0
+
+[node name="AmbianceVol" type="HBoxContainer" parent="OptionsPanel/ScrollParent/SettingScroll"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AmbianceText" type="TextEdit" parent="OptionsPanel/ScrollParent/SettingScroll/AmbianceVol"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Ambiance"
+
+[node name="AmbianceSlider" type="HSlider" parent="OptionsPanel/ScrollParent/SettingScroll/AmbianceVol"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+min_value = -50.0
+max_value = 10.0
+value = -10.0
+
+[node name="SoundVol" type="HBoxContainer" parent="OptionsPanel/ScrollParent/SettingScroll"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SoundText" type="TextEdit" parent="OptionsPanel/ScrollParent/SettingScroll/SoundVol"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Sound"
+
+[node name="SoundSlider" type="HSlider" parent="OptionsPanel/ScrollParent/SettingScroll/SoundVol"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+min_value = -50.0
+max_value = 10.0
+value = -10.0
+
+[node name="MusicVol" type="HBoxContainer" parent="OptionsPanel/ScrollParent/SettingScroll"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MusicText" type="TextEdit" parent="OptionsPanel/ScrollParent/SettingScroll/MusicVol"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="OptionsPanel/ScrollParent/SettingScroll/MusicVol"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+min_value = -50.0
+max_value = 10.0
+value = -10.0
+
+[node name="ExitButton" type="Button" parent="OptionsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.896
+anchor_top = 0.033
+anchor_right = 0.982
+anchor_bottom = 0.167
+offset_left = -0.0640259
+offset_top = 0.0799999
+offset_right = -0.0880127
+offset_bottom = -0.0800018
+text = "x"
+
+[connection signal="value_changed" from="OptionsPanel/ScrollParent/SettingScroll/MasterVol/MasterSlider" to="." method="_mastervolume"]
+[connection signal="value_changed" from="OptionsPanel/ScrollParent/SettingScroll/AmbianceVol/AmbianceSlider" to="." method="_ambiancevolume"]
+[connection signal="value_changed" from="OptionsPanel/ScrollParent/SettingScroll/SoundVol/SoundSlider" to="." method="_soundvolume"]
+[connection signal="value_changed" from="OptionsPanel/ScrollParent/SettingScroll/MusicVol/MusicSlider" to="." method="_musicvolume"]
+[connection signal="pressed" from="OptionsPanel/ExitButton" to="." method="_exitoptions"]
