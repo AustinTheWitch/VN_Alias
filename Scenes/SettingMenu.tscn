@@ -65,9 +65,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
-min_value = -50.0
-max_value = 10.0
-value = -10.0
+min_value = -45.0
+max_value = 5.0
 
 [node name="AmbianceVol" type="HBoxContainer" parent="OptionsPanel/ScrollParent/SettingScroll"]
 clip_contents = true
@@ -84,9 +83,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
-min_value = -50.0
-max_value = 10.0
-value = -10.0
+min_value = -45.0
+max_value = 5.0
 
 [node name="SoundVol" type="HBoxContainer" parent="OptionsPanel/ScrollParent/SettingScroll"]
 clip_contents = true
@@ -103,9 +101,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
-min_value = -50.0
-max_value = 10.0
-value = -10.0
+min_value = -45.0
+max_value = 5.0
 
 [node name="MusicVol" type="HBoxContainer" parent="OptionsPanel/ScrollParent/SettingScroll"]
 clip_contents = true
@@ -122,9 +119,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
-min_value = -50.0
-max_value = 10.0
-value = -10.0
+min_value = -45.0
+max_value = 5.0
+
+[node name="SaveSettings" type="Button" parent="OptionsPanel/ScrollParent/SettingScroll"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Confirm & Save"
 
 [node name="ExitButton" type="Button" parent="OptionsPanel"]
 layout_mode = 1
@@ -143,4 +145,5 @@ text = "x"
 [connection signal="value_changed" from="OptionsPanel/ScrollParent/SettingScroll/AmbianceVol/AmbianceSlider" to="." method="_ambiancevolume"]
 [connection signal="value_changed" from="OptionsPanel/ScrollParent/SettingScroll/SoundVol/SoundSlider" to="." method="_soundvolume"]
 [connection signal="value_changed" from="OptionsPanel/ScrollParent/SettingScroll/MusicVol/MusicSlider" to="." method="_musicvolume"]
+[connection signal="pressed" from="OptionsPanel/ScrollParent/SettingScroll/SaveSettings" to="." method="_savesettings"]
 [connection signal="pressed" from="OptionsPanel/ExitButton" to="." method="_exitoptions"]

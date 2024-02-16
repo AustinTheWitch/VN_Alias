@@ -5,6 +5,7 @@ var sprites #Sprite Script call
 var gamescene #Game Scene Script call
 var decisions #Decision Box call
 var mainmenu #Main Menu call
+var pausemenu #Pause Menu call
 
 #Input Vars--------------------------------------------
 var maxline = 0
@@ -14,17 +15,15 @@ var Dialogue = "Testing"
 var CurrentScene = []
 var Nar = "Talking Here.."
 var CurrentNar = []
-var play = false
 
 #AutoPlay Vars------------------------------------------
 var AP = Button.new()
+var APtimer = Timer.new()
 var APspeed = 3.0 #Player adjusted and Essentially a Time Limit
+var APstart = false
 
 #Rewind Vars--------------------------------------------
 var Reverse = Button.new()
-
-#Menu Vars----------------------------------------------
-var Paused = false
 
 #Load/Save Game Vars-----------------------------------------
 var Saving = false
@@ -38,15 +37,16 @@ func _ready():
 	gamescene = get_node("/root/GameScene")
 	decisions = get_node("/root/DecisionBox")
 	mainmenu = get_node("/root/MainMenu")
+	pausemenu = get_node("/root/PauseMenu")
 	AP = $PlayerControls/AutoPlay
 	Reverse = $PlayerControls/Rewind
+	APtimer = $PlayerControls/AutoPlay/Timer
 
 func _process(_delta):
-	maxline = CurrentScene.size() - 1
 	CurrentScene = data.DialogueScript.values()[data.SceneKey]
 	CurrentNar = data.Narrator.values()[data.SceneKey]
+	maxline = CurrentScene.size() - 1
 	_DialogueBox()
-	_AutoPlay()
 	_MenuManager()
 
 func _DialogueBox():
@@ -56,16 +56,27 @@ func _DialogueBox():
 	$DialogueBox/DialoguePanel/Narrator.text = Nar
 
 func _input(event):
-	if event.is_action_released("Progress") and decisions.endline == false and mainmenu.play == true:
+	if event.is_action_released("Progress") and mainmenu.play == true and data.LineNum < maxline:
 		data.LineNum += 1
 		gamescene._soundselect()
-	elif data.LineNum >= maxline and play == true:
-		decisions.endline = true
-	else: decisions.endline = false
+	
+	if event.is_action_pressed("Pause"):
+		pausemenu.paused = !pausemenu.paused
+		mainmenu.play = !pausemenu.paused
 
-#AutoPlay Function-----------------------------------------
+#AutoPlay Functions-----------------------------------------
 func _AutoPlay():
-	pass
+	APstart = !APstart
+	if APstart == true and data.LineNum < maxline:
+		data.LineNum += 1
+		APtimer.start(APspeed)
+	elif APstart == false or data.LineNum >= maxline:
+		APtimer.stop()
+
+func _AutoPlayTimer():
+	data.LineNum += 1
+	if data.LineNum >= maxline:
+		APtimer.stop()
 
 #Rewind Button---------------------------------------------
 func Rewind():
@@ -74,35 +85,8 @@ func Rewind():
 	else: data.LineNum -= 1
 
 func _MenuManager():
-	$PausePanel.visible = Paused
+	if data.LineNum >= maxline:
+		decisions.endline = true
+	else: decisions.endline = false
 	$DialogueBox.visible = mainmenu.play
 	$PlayerControls.visible = mainmenu.play
-
-#Pause Menu--------------------------------------------------
-func _saving():
-	var file = FileAccess.open(SavePath, FileAccess.WRITE)
-	file.store_var(data.LineNum)
-	file.store_var(data.SceneKey)
-	Saving = false
-	
-
-func _loading():
-	if FileAccess.file_exists(SavePath):
-		print("File Found")
-		var file = FileAccess.open(SavePath, FileAccess.READ)
-		data.LineNum = file.get_var(data.LineNum)
-		data.SceneKey = file.get_var(data.SceneKey)
-		gamescene._AmbianceSelect()
-		gamescene._MusicSelect()
-		Paused = false
-		Loading = false
-	else:
-		print("File not found")
-
-#Row 1 Files---------------------------------------------------
-func File1():
-	SavePath = "user://r1f1.save"
-	print (SavePath)
-	if Loading == true and Saving == false:
-		_loading()
-	else: _saving()

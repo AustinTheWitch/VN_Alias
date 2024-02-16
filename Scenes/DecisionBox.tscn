@@ -43,3 +43,7 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 20.0
 text = "Is this thing on?"
+
+[connection signal="pressed" from="PlayerInput/Decision1" to="." method="_decision1"]
+[connection signal="pressed" from="PlayerInput/Decision2" to="." method="_decision2"]
+[connection signal="pressed" from="PlayerInput/Decision3" to="." method="_decision3"]

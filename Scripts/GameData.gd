@@ -99,8 +99,3 @@ var MusicGallery = {
 
 var SceneKey = 0
 var LineNum = 0
-
-var mastervol = 0.0
-var ambiancevol = 0.0
-var soundvol = 0.0
-var musicvol = 0.0

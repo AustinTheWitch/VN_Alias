@@ -29,6 +29,7 @@ func _newgame():
 	main = false
 	options.setting = false
 	play = true
+	loader.loading = false
 	scene._ambianceselect()
 	scene._musicselect()
 

@@ -31,8 +31,10 @@ var APspeed = 3.0 #Player adjusted and Essentially a Time Limit
 #Rewind Vars--------------------------------------------
 var Reverse = Button.new()
 
-#Options Menu Vars=-------------------------------------
+# Menu Varables-------------------------------------
 var Options = false
+
+# Volume--------------------------------------------
 var MasterVol
 var AmbianceVol 
 var SoundVol
@@ -153,7 +155,7 @@ func Rewind():
 
 func _MenuManager():
 	$OptionsPanel.visible = Options
-	$MenuPanel.visible = data.Main
+	$MenuPanel.visible =
 	$PausePanel.visible = Paused
 	$DialogueBox.visible = Play
 	$PlayerControls.visible = Play
