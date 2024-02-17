@@ -16,7 +16,7 @@ func _ready():
 	pausemenu = get_node("/root/PauseMenu")
 	mainmenu = get_node("/root/MainMenu")
 
-func _process(delta):
+func _process(_delta):
 	$Background.visible = saving or loading
 	if saving == true:
 		loading = false

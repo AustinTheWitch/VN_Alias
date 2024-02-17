@@ -16,7 +16,7 @@ func _ready():
 	play = false
 	main = true
 
-func _process(delta):
+func _process(_delta):
 	$MenuPanel.visible = main
 
 func _continuegame():

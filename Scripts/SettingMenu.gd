@@ -28,7 +28,7 @@ func _ready():
 	data = get_node("/root/GameData")
 	setting = false
 
-func _process(delta):
+func _process(_delta):
 	$OptionsPanel.visible = setting
 
 func _loadsettings():

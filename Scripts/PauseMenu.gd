@@ -13,7 +13,7 @@ func _ready():
 	saveload = get_node("/root/SaveLoadMenu")
 	setting = get_node("/root/SettingMenu")
 
-func _process(delta):
+func _process(_delta):
 	$PausePanel.visible = paused
 	if paused == false and mainmenu.main == false and setting.setting == true:
 		setting.setting = false

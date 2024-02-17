@@ -18,7 +18,7 @@ func _ready():
 	scene = get_node("/root/GameScene")
 	mainmenu = get_node("/root/MainMenu")
 
-func _process(delta):
+func _process(_delta):
 	_playerchoices()
 	if mainmenu.play == true and endline == true:
 		$PlayerInput.visible = true
