@@ -155,7 +155,7 @@ func Rewind():
 
 func _MenuManager():
 	$OptionsPanel.visible = Options
-	$MenuPanel.visible =
+	#$MenuPanel.visible = 
 	$PausePanel.visible = Paused
 	$DialogueBox.visible = Play
 	$PlayerControls.visible = Play

@@ -48,7 +48,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Save File"
 
-[node name="SaveButton" type="TextureButton" parent="Background/SaveFileBox/File1Box"]
+[node name="SaveButton" type="TextureButton" parent="Background/SaveFileBox/File1Box" groups=["SaveFiles"]]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
@@ -69,4 +69,5 @@ offset_right = 0.399963
 offset_bottom = -0.176003
 text = "x"
 
+[connection signal="pressed" from="Background/SaveFileBox/File1Box/SaveButton" to="." method="_file1"]
 [connection signal="pressed" from="Background/ExitButton" to="." method="_exitsaveload"]

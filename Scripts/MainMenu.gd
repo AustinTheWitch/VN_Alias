@@ -13,7 +13,6 @@ func _ready():
 	options = get_node("/root/SettingMenu")
 	loader = get_node("/root/SaveLoadMenu")
 	scene = get_node("/root/GameScene")
-	
 	play = false
 	main = true
 
@@ -26,24 +25,24 @@ func _continuegame():
 	options.setting = false
 
 func _newgame():
+	data.LineNum = 0
+	data.SceneKey = 0
+	scene._ambianceselect()
+	scene._musicselect()
 	main = false
 	options.setting = false
 	play = true
 	loader.loading = false
-	scene._ambianceselect()
-	scene._musicselect()
+	print ("Put Confirm Screen In Here")
 
 func _loadgame():
 	loader.loading = true
-	print("Open Load Menu and make it visible")
 
 func _gallery():
 	print("Create and load up gallery")
 
 func _settings():
 	options.setting = true
-	print("Open Settings Scene and make it visible")
 
 func _exitgame():
-	print("Exit and Close Game")
-
+	print("Confirm Quit Window First")

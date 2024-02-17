@@ -5,9 +5,13 @@ var setting = false
 
 # volume varables--------------------
 var master = 0.0
+var masterslider = HSlider.new()
 var ambiance = 0.0
+var ambianceslider = HSlider.new()
 var sound = 0.0
+var soundslider = HSlider.new()
 var music = 0.0
+var musicslider = HSlider.new()
 
 # saved varables----------------------
 var mastervolume = 0
@@ -16,6 +20,10 @@ var soundvolume = 0
 var musicvolume = 0
 
 func _ready():
+	masterslider = $OptionsPanel/ScrollParent/SettingScroll/MasterVol/MasterSlider
+	ambianceslider = $OptionsPanel/ScrollParent/SettingScroll/AmbianceVol/AmbianceSlider
+	soundslider = $OptionsPanel/ScrollParent/SettingScroll/SoundVol/SoundSlider
+	musicslider = $OptionsPanel/ScrollParent/SettingScroll/MusicVol/MusicSlider
 	_loadsettings()
 	data = get_node("/root/GameData")
 	setting = false
@@ -27,10 +35,14 @@ func _loadsettings():
 	if FileAccess.file_exists("user://settings.save"):
 		print("File Found")
 		var file = FileAccess.open("user://settings.save", FileAccess.READ)
-		master = file.get_var(mastervolume)
-		print (file.get_var(mastervolume))
-
-
+		mastervolume = file.get_var()
+		masterslider.value = mastervolume
+		ambiancevolume = file.get_var()
+		ambianceslider.value = ambiancevolume
+		soundvolume = file.get_var()
+		soundslider.value = soundvolume
+		musicvolume = file.get_var()
+		musicslider.value = musicvolume
 	else: print("File does not exist")
 
 func _mastervolume(master):
@@ -59,4 +71,3 @@ func _savesettings():
 
 func _exitoptions():
 	setting = false
-	

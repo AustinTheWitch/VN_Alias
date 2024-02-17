@@ -20,7 +20,10 @@ func _process(delta):
 	else: return
 
 func _resume():
-	pass
+	paused = false
+	setting.setting = false
+	mainmenu.main = false
+	mainmenu.play = true
 
 func _savegame():
 	saveload.saving = true
@@ -29,6 +32,7 @@ func _loadgame():
 	saveload.loading = true
 
 func _gallery():
+	print ("Load Up Gallery Scene")
 	pass
 
 func _settings():
