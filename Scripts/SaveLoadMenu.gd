@@ -8,15 +8,26 @@ var mainmenu # Main Menu call
 var saving = false
 var loading = false
 var savepath = "user://sceneline.save"
+# Timestamp varables-------------------------------
+var savetime = [] # string varable
 
+# Image varables-----------------------------------
+var saveimage = []
+var imagestring = ["Test"]
+var savekey = [1]
 
 func _ready():
 	data = get_node("/root/GameData")
 	scene = get_node("/root/GameScene")
 	pausemenu = get_node("/root/PauseMenu")
 	mainmenu = get_node("/root/MainMenu")
+	savetime = get_tree().get_nodes_in_group("SaveText")
+	saveimage = get_tree().get_nodes_in_group("SaveImage")
+	
+	# _FileData func---------------------------------------------------
+	_file1data()
 
-func _process(_delta):
+func _process(delta):
 	$Background.visible = saving or loading
 	if saving == true:
 		loading = false
@@ -43,9 +54,20 @@ func _loadgame():
 	mainmenu.main = false
 	mainmenu.play = true
 
+# File 1
+func _file1data():
+	var file = FileAccess.open("user://file1.save", FileAccess.READ)
+	savekey[0] = file.get_var()
+	imagestring[0] = data.CGscript.values()[savekey[0]]
+	saveimage[0].set_texture_normal(data.BackdropGallery.get(imagestring[0]))
 func _file1():
 	savepath = "user://file1.save"
 	if saving == true:
+		savekey[0] = data.SceneKey
+		imagestring[0] = data.CGscript.values()[savekey[0]]
+		saveimage[0].set_texture_normal(data.BackdropGallery.get(imagestring[0]))
+		var file = FileAccess.open(savepath, FileAccess.READ)
+		file.store_var(savekey[0])
 		_savegame()
 	else: _loadgame()
 

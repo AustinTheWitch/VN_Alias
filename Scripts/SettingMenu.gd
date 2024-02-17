@@ -45,18 +45,22 @@ func _loadsettings():
 		musicslider.value = musicvolume
 	else: print("File does not exist")
 
+@warning_ignore("shadowed_variable")
 func _mastervolume(master):
 	mastervolume = AudioServer.get_bus_volume_db(0)
 	AudioServer.set_bus_volume_db(0, master)
 
+@warning_ignore("shadowed_variable")
 func _ambiancevolume(ambiance):
 	ambiancevolume = AudioServer.get_bus_volume_db(1)
 	AudioServer.set_bus_volume_db(1, ambiance)
 
+@warning_ignore("shadowed_variable")
 func _soundvolume(sound):
 	soundvolume = AudioServer.get_bus_volume_db(2)
 	AudioServer.set_bus_volume_db(2, sound)
 
+@warning_ignore("shadowed_variable")
 func _musicvolume(music):
 	musicvolume = AudioServer.get_bus_volume_db(3)
 	AudioServer.set_bus_volume_db(3, music)
