@@ -16,7 +16,8 @@ func _readfunc():
 	var jay_string = file.get_as_text()
 	var jason = JSON.new()
 	var data = JSON.parse_string(jay_string)
-	print(data)
+	var pulleddata = data.get("File1")
+	print(pulleddata[0])
 
 func _ready():
 	#_writefunc()
