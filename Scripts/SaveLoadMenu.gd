@@ -26,7 +26,6 @@ func _ready():
 	mainmenu = get_node("/root/MainMenu")
 	savetime = get_tree().get_nodes_in_group("SaveText")
 	saveimage = get_tree().get_nodes_in_group("SaveImage")
-	_filelabel()
 
 func _process(_delta):
 	$Background.visible = saving or loading
@@ -34,6 +33,7 @@ func _process(_delta):
 		loading = false
 	elif loading == true:
 		saving = false
+	_filelabel()
 
 func _saveset():
 #UI Settings--------------------
@@ -64,17 +64,69 @@ func _loadgame():
 	var loadstring = file.get_as_text()
 	filedata = JSON.parse_string(loadstring)
 	var loadedfile = filedata.get(filename)
-	data.SceneKey = loadedfile[0]
-	data.LineNum = loadedfile[1]
-	scene._ambianceselect()
-	scene._musicselect()
-	_loadset()
+	if loadedfile != null:
+		data.SceneKey = loadedfile[0]
+		data.LineNum = loadedfile[1]
+		scene._ambianceselect()
+		scene._musicselect()
+		_loadset()
+	else: print("No File")
 
 func _filelabel():
-	pass
+	var file = FileAccess.open("user://gamefile.save", FileAccess.READ)
+	var loadstring = file.get_as_text()
+	filedata = JSON.parse_string(loadstring)
+	
+	#File Arrays--------------------------------------
+	var file1 = []
+	var file2 = []
+	var file3 = []
+	var file4 = []
+	
+	file1 = filedata.get("File1")
+	if file1 != null:
+		saveimage[0].set_texture_normal(data.BackdropGallery.get(file1[2]))
+		savetime[0].text = file1[3]
+	else: pass
+	
+	file2 = filedata.get("File2")
+	if file2 != null:
+		saveimage[1].set_texture_normal(data.BackdropGallery.get(file2[2]))
+		savetime[1].text = file2[3]
+	else: pass
+
+	file3 = filedata.get("File3")
+	if file3 != null:
+		saveimage[2].set_texture_normal(data.BackdropGallery.get(file3[2]))
+		savetime[2].text = file3[3]
+	else: pass
+
+	file4 = filedata.get("File4")
+	if file4 != null:
+		saveimage[3].set_texture_normal(data.BackdropGallery.get(file4[2]))
+		savetime[3].text = file4[3]
+	else: pass
 
 func _file1():
 	filename = "File1"
+	if saving == true:
+		_savegame()
+	else: _loadgame()
+
+func _file2():
+	filename = "File2"
+	if saving == true:
+		_savegame()
+	else: _loadgame()
+
+func _file3():
+	filename = "File3"
+	if saving == true:
+		_savegame()
+	else: _loadgame()
+
+func _file4():
+	filename = "File4"
 	if saving == true:
 		_savegame()
 	else: _loadgame()
