@@ -4,6 +4,7 @@ var data #Game Data call
 var options #Setting Menu call
 var loader #Loading Menu call
 var scene #Game Scene call
+var gallery #Gallery call
 
 var main = true
 var play = false
@@ -13,16 +14,12 @@ func _ready():
 	options = get_node("/root/SettingMenu")
 	loader = get_node("/root/SaveLoadMenu")
 	scene = get_node("/root/GameScene")
+	gallery = get_node("/root/Gallery")
 	play = false
 	main = true
 
 func _process(_delta):
 	$MenuPanel.visible = main
-
-func _continuegame():
-	print("Set Previous Saved Line and Scene")
-	main = false
-	options.setting = false
 
 func _newgame():
 	data.LineNum = 0
@@ -33,16 +30,23 @@ func _newgame():
 	options.setting = false
 	play = true
 	loader.loading = false
+	gallery.gallery = false
+	gallery.fullscreen = false
 	print ("Put Confirm Screen In Here")
 
 func _loadgame():
 	loader.loading = true
+	gallery.gallery = false
+	gallery.fullscreen = false
 
 func _gallery():
-	print("Create and load up gallery")
+	gallery.gallery = !gallery.gallery
+	options.setting = false
 
 func _settings():
 	options.setting = true
+	gallery.gallery = false
+	gallery.fullscreen = false
 
 func _exitgame():
 	print("Confirm Quit Window First")

@@ -18,6 +18,7 @@ var filename = "File"
 var filedata = {
 	"Empty": [0, 0, "Image", "Time"]
 }
+var lastsave = []
 
 func _ready():
 	data = get_node("/root/GameData")

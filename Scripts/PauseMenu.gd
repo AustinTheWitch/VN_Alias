@@ -4,6 +4,7 @@ var data
 var mainmenu
 var saveload
 var setting
+var gallery
 
 var paused = false
 
@@ -12,6 +13,7 @@ func _ready():
 	mainmenu = get_node("/root/MainMenu")
 	saveload = get_node("/root/SaveLoadMenu")
 	setting = get_node("/root/SettingMenu")
+	gallery = get_node("/root/Gallery")
 
 func _process(_delta):
 	$PausePanel.visible = paused
@@ -24,6 +26,8 @@ func _resume():
 	setting.setting = false
 	mainmenu.main = false
 	mainmenu.play = true
+	gallery.gallery = false
+	gallery.fullscreen = false
 
 func _savegame():
 	saveload.saving = true
@@ -32,8 +36,7 @@ func _loadgame():
 	saveload.loading = true
 
 func _gallery():
-	print ("Load Up Gallery Scene")
-	pass
+	gallery.gallery = !gallery.gallery
 
 func _settings():
 	setting.setting = !setting.setting
@@ -42,3 +45,5 @@ func _mainmenu():
 	mainmenu.main = true
 	paused = false
 	setting.setting = false
+	gallery.gallery = false
+	gallery.fullscreen = false

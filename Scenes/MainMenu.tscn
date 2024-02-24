@@ -26,90 +26,76 @@ offset_bottom = 0.00799561
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Continue" type="Button" parent="MenuPanel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.062
-anchor_top = 0.067
-anchor_right = 0.467
-anchor_bottom = 0.187
-offset_left = 0.12
-offset_top = 0.0559998
-offset_right = -0.0800018
-offset_bottom = 0.215996
-text = "Continue"
-alignment = 0
-
 [node name="New Game" type="Button" parent="MenuPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.062
-anchor_top = 0.222
-anchor_right = 0.467
-anchor_bottom = 0.34
-offset_left = 0.12
-offset_top = 0.095993
-offset_right = -0.0800018
-offset_bottom = 0.119995
+anchor_left = 0.067
+anchor_top = 0.037
+anchor_right = 0.471
+anchor_bottom = 0.155
+offset_left = -0.0799999
+offset_top = 0.0159998
+offset_right = -0.0400009
+offset_bottom = 0.0400085
 text = "New Game"
 alignment = 0
 
 [node name="Load Game" type="Button" parent="MenuPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.062
-anchor_top = 0.375
+anchor_left = 0.067
+anchor_top = 0.19
 anchor_right = 0.467
-anchor_bottom = 0.5
-offset_left = 0.12
-offset_top = -1.52588e-05
-offset_right = -0.0800095
+anchor_bottom = 0.315
+offset_left = -0.0799999
+offset_top = -0.0800095
+offset_right = 0.919991
+offset_bottom = -0.0800171
 text = "Load Game"
 alignment = 0
 
 [node name="Gallery" type="Button" parent="MenuPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.062
-anchor_top = 0.53
+anchor_left = 0.067
+anchor_top = 0.345
 anchor_right = 0.467
-anchor_bottom = 0.652
-offset_left = 0.12
-offset_top = 0.0399933
-offset_right = -0.0800018
-offset_bottom = -0.664001
+anchor_bottom = 0.465
+offset_left = -0.0799999
+offset_top = -0.0400085
+offset_right = 0.919998
+offset_bottom = 0.119995
 text = "Gallery"
 alignment = 0
 
 [node name="Settings" type="Button" parent="MenuPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.062
-anchor_top = 0.692
+anchor_left = 0.067
+anchor_top = 0.507
 anchor_right = 0.467
-anchor_bottom = 0.812
-offset_left = 0.12
-offset_top = 0.0559998
-offset_right = -0.0800018
-offset_bottom = 0.216003
+anchor_bottom = 0.627
+offset_left = -0.0799999
+offset_top = -0.0240173
+offset_right = 0.919998
+offset_bottom = 0.135986
 text = "Settings"
 alignment = 0
 
 [node name="Exit" type="Button" parent="MenuPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.062
-anchor_top = 0.845
+anchor_left = 0.067
+anchor_top = 0.66
 anchor_right = 0.467
-anchor_bottom = 0.963
-offset_left = 0.119999
-offset_top = -0.0400085
-offset_right = -0.0800018
-offset_bottom = -0.0160217
+anchor_bottom = 0.778
+offset_left = -0.0800009
+offset_top = -0.120026
+offset_right = 0.919998
+offset_bottom = -0.0960693
 text = "Exit Game"
 alignment = 0
 
-[connection signal="pressed" from="MenuPanel/Continue" to="." method="_continuegame"]
 [connection signal="pressed" from="MenuPanel/New Game" to="." method="_newgame"]
 [connection signal="pressed" from="MenuPanel/Load Game" to="." method="_loadgame"]
 [connection signal="pressed" from="MenuPanel/Gallery" to="." method="_gallery"]

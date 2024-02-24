@@ -66,7 +66,6 @@ func _musicvolume(music):
 	AudioServer.set_bus_volume_db(3, music)
 
 func _savesettings():
-	print (mastervolume)
 	var file = FileAccess.open("user://settings.save", FileAccess.WRITE)
 	file.store_var(mastervolume)
 	file.store_var(ambiancevolume)

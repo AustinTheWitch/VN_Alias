@@ -29,6 +29,7 @@ SettingMenu="*res://Scenes/SettingMenu.tscn"
 MainMenu="*res://Scenes/MainMenu.tscn"
 SaveLoadMenu="*res://Scenes/SaveLoadMenu.tscn"
 PauseMenu="*res://Scenes/PauseMenu.tscn"
+Gallery="*res://Scenes/Gallery.tscn"
 
 [dotnet]
 

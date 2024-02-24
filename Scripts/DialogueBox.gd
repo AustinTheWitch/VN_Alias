@@ -70,7 +70,7 @@ func _AutoPlay():
 	if APstart == true and data.LineNum < maxline:
 		data.LineNum += 1
 		APtimer.start(APspeed)
-	elif APstart == false or data.LineNum >= maxline:
+	elif APstart == false or data.LineNum >= maxline or pausemenu.paused == true:
 		APtimer.stop()
 
 func _AutoPlayTimer():

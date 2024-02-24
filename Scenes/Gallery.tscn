@@ -1,0 +1,112 @@
+[gd_scene load_steps=2 format=3 uid="uid://bv8fsukbnnxjx"]
+
+[ext_resource type="Script" path="res://Scripts/Gallery.gd" id="1_3c63o"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_3c63o")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.222
+anchor_top = 0.012
+anchor_right = 0.993
+anchor_bottom = 0.988
+offset_left = 0.255981
+offset_top = 0.224
+offset_right = 0.0639648
+offset_bottom = -0.223999
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CGimage" type="TextureButton" parent="Panel" groups=["CG"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.042
+anchor_top = 0.051
+anchor_right = 0.232
+anchor_bottom = 0.19
+offset_left = 0.079998
+offset_top = -0.232002
+offset_right = -0.320007
+offset_bottom = -0.0800095
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="CGimage2" type="TextureButton" parent="Panel" groups=["CG"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.295
+anchor_top = 0.051
+anchor_right = 0.484
+anchor_bottom = 0.19
+offset_left = -0.200012
+offset_top = -0.232002
+offset_right = 0.159973
+offset_bottom = -0.0800095
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="CGimage3" type="TextureButton" parent="Panel" groups=["CG"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.547
+anchor_top = 0.051
+anchor_right = 0.737
+anchor_bottom = 0.19
+offset_left = 0.279968
+offset_top = -0.232002
+offset_right = -0.120056
+offset_bottom = -0.0800095
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="CGimage4" type="TextureButton" parent="Panel" groups=["CG"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.051
+anchor_right = 0.989
+anchor_bottom = 0.19
+offset_top = -0.232002
+offset_right = 0.359985
+offset_bottom = -0.0800095
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="CGBox" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.389
+anchor_top = 0.198
+anchor_right = 0.965
+anchor_bottom = 0.79
+offset_left = -0.128021
+offset_top = -0.304016
+offset_right = 0.319946
+offset_bottom = 0.0799866
+mouse_filter = 2
+
+[node name="CGfull" type="TextureRect" parent="CGBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+expand_mode = 1
+
+[node name="CloseFullScreen" type="Button" parent="CGBox"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "X"
+
+[connection signal="pressed" from="Panel/CGimage" to="." method="_CG1"]
+[connection signal="pressed" from="Panel/CGimage2" to="." method="_CG2"]
+[connection signal="pressed" from="CGBox/CloseFullScreen" to="." method="_closegallery"]
